@@ -2,15 +2,15 @@ name: Node.js CI
 
 env:
   REGISTRY: "registry.digitalocean.com/hlads"
-  IMAGE_NAME: "myvizion-projects-endpoint-img"
+  IMAGE_NAME: "myvizion-admin-web-img"
 
 on:
   push:
     paths-ignore: # Don't trigger on files that are updated by the CI
-      - 'k8s/**'
-    branches: [ master ]
+      - "k8s/**"
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   test:
@@ -22,14 +22,14 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
 
   build_and_push:
     runs-on: ubuntu-latest
