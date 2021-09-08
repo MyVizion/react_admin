@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: myvizion-admin-web-cert
+  namespace: myvizion-react-web-ns
+spec:
+  dnsNames:
+    - admin.myvizion.net
+  secretName: myvizion-admin-web-tls
+  issuerRef:
+    name: letsencrypt-cluster-issuer
+    kind: ClusterIssuer

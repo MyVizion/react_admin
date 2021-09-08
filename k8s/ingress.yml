@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myvizion-admin-web-ingress
+  namespace: myvizion-react-web-ns
+spec:
+  tls:
+    - hosts:
+        - admin.myvizion.net
+      secretName: myvizion-admin-web-tls
+  rules:
+    - host: admin.myvizion.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: myvizion-admin-web-service
+                port:
+                  number: 80
