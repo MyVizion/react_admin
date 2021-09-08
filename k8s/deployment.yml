@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: myvizion-admin-web
-          image: registry.digitalocean.com/hlads/myvizion-projects-endpoint-img:c3cff69
+          image: registry.digitalocean.com/hlads/myvizion-admin-web-img:0385d11
           imagePullPolicy: Always
           resources:
             requests:
