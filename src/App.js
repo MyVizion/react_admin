@@ -5,8 +5,6 @@ import restProvider from "ra-data-simple-rest"
 import projectsList from "./components/ProjectsList"
 import usersList from "./components/UsersList"
 
-//force ci run
-
 function App() {
   return (
     <Admin dataProvider={restProvider('https://api.myvizion.net')}>
