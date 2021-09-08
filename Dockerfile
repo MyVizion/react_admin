@@ -1,47 +1,21 @@
-FROM node:14-alpine AS node
+# Step 1
 
+FROM node:10-alpine as build-step
 
-# Builder stage
+RUN mkdir /app
 
-FROM node AS builder
+WORKDIR /app
 
-# Use /app as the CWD
-WORKDIR /app            
+COPY package.json /app
 
-# Copy package.json and package-lock.json to /app
-COPY package*.json ./   
+RUN npm install
 
-# Install all dependencies
-RUN npm i               
+COPY . /app
 
-# Copy the rest of the code
-COPY . .                
+RUN npm run build
 
+# Stage 2
 
-# Final stage
+FROM nginx:1.17.1-alpine
 
-FROM node AS final
-
-# Prepare destination directory and ensure user node owns it
-RUN mkdir -p /home/node/ && chown -R node:node /home/node/
-
-# Set CWD
-WORKDIR /home/node/
-
-# Copy package.json and package-lock.json
-COPY package*.json ./
-
-# Switch to user node
-USER node
-
-# Install libraries as user node
-RUN npm i --only=production
-
-# Copy js files and change ownership to user node
-COPY --chown=node:node --from=builder /app .
-
-# Open desired port
-EXPOSE 3000
-
-# Use js files to run the application
-ENTRYPOINT ["node", "app.js"]  
+COPY --from=build-step /app/build /usr/share/nginx/html
