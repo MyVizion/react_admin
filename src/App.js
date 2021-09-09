@@ -8,7 +8,7 @@ import categoriesList from "./components/categories/categoriesList"
 
 function App() {
   return (
-    <Admin dataProvider={RestProvider('http://localhost:3000')}>
+    <Admin dataProvider={RestProvider('http://api.myvizion.net')}>
       <Resource name='projects' list={projectsList} />
       <Resource name='users' list={usersList} />
       <Resource name='categories' list={categoriesList} />
