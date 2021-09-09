@@ -1,15 +1,17 @@
 import React from "react";
 import { Admin, Resource} from "react-admin"
-import restProvider from "ra-data-simple-rest"
+import RestProvider from 'ra-data-json-server';
 
-import projectsList from "./components/ProjectsList"
-import usersList from "./components/UsersList"
+import projectsList from "./components/projects/ProjectsList"
+import usersList from "./components/users/UsersList"
+import categoriesList from "./components/categories/categoriesList"
 
 function App() {
   return (
-    <Admin dataProvider={restProvider('https://api.myvizion.net')}>
+    <Admin dataProvider={RestProvider('http://localhost:3000')}>
       <Resource name='projects' list={projectsList} />
       <Resource name='users' list={usersList} />
+      <Resource name='categories' list={categoriesList} />
     </Admin>
   );
 }

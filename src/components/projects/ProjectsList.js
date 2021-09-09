@@ -5,12 +5,11 @@ const ProjectsList = (props) => {
     return (
         <List {...props}>
             <Datagrid>
-                <TextField source='project_id' />
-                <TextField source='category_id' />
+                <TextField source='id' />
+                <TextField source='category' />
                 <TextField source='title' />
-                <TextField source='UUID' />
-                <DateField source='created_at' />
-                <DateField source='updated_at' />
+                <DateField source='createdAt' />
+                <DateField source='updatedAt' />
                 <EditButton basePath='/projects' />
                 <DeleteButton basePath='/projects' />
             </Datagrid>
