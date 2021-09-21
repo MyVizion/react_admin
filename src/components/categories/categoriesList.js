@@ -1,7 +1,7 @@
 import React from 'react'
 import { List, Datagrid, TextField, EditButton, DeleteButton } from 'react-admin'
 
-const ProjectsList = (props) => {
+const CategoriesList = (props) => {
     return (
         <List {...props}>
             <Datagrid>
@@ -13,4 +13,4 @@ const ProjectsList = (props) => {
     )
 }
 
-export default ProjectsList
+export default CategoriesList

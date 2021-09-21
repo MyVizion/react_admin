@@ -6,11 +6,12 @@ const UsersList = (props) => {
     return (
         <List {...props}>
             <Datagrid>
-                <TextField source='uuid' />
+                <TextField source='id' />
                 <TextField source='username' />
+                <TextField source='email' />
+                <TextField source='firstname' />
+                <TextField source='lastname' />
                 <NumberField source='age' />
-                <TextField source='school' />
-                <TextField source='study_program' />
                 <DateField source='created_at' />
                 <DateField source='updated_at' />
                 <EditButton basePath='/users' />
