@@ -16,6 +16,6 @@ RUN npm run build
 
 # Stage 2
 
-FROM nginx:1.17.1-alpine
+FROM nginx:1.25.1-alpine
 
 COPY --from=build-step /app/build /usr/share/nginx/html
